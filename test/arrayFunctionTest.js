@@ -1,6 +1,7 @@
 const assert = require('assert');
 const {
-  map
+  map,
+  filter 
 } = require('../src/arrayFunction.js');
 
 const square = function(number) {
@@ -13,6 +14,10 @@ const incrementByOne = function(number) {
 
 const identity = function(number) {
   return number;
+}
+
+const isEven = function(number) {
+  return number % 2 == 0;
 }
 
 describe('Map Test Cases', function() {
@@ -53,3 +58,13 @@ describe('Map Test Cases', function() {
   });
 });
 
+describe('Filter Test Cases', function() {
+  describe('isEven', function() {
+    it('should list even numbers', function() {
+      assert.deepEqual(filter(isEven, [1, 2, 3, 4, 5]), [2, 4]);
+    });
+    it('should list 0 as even number', function() {
+      assert.deepEqual(filter(isEven, [0]), [0]);
+    });
+  });
+});

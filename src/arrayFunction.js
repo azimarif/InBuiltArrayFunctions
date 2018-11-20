@@ -7,6 +7,17 @@ const map = function(mapperFunction, inputArray){
   return result;
 }
 
+const filter = function(filtererFunction, inputArray){
+  let result = [];
+  for(element of inputArray){
+    if(filtererFunction(element)){
+      result.push(element);
+    }
+  }
+  return result;
+}
+
 module.exports = {
-  map
+  map,
+  filter 
 }
