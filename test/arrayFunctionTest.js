@@ -11,6 +11,10 @@ const incrementByOne = function(number) {
   return number + 1;
 }
 
+const identity = function(number) {
+  return number;
+}
+
 describe('Map Test Cases', function() {
   describe('square', function() {
     it('should square the positive number', function() {
@@ -33,6 +37,18 @@ describe('Map Test Cases', function() {
     });
     it('should increment 0 by 1', function() {
       assert.deepEqual(map(incrementByOne, [0]), [1]);
+    });
+  });
+
+  describe('identity', function() {
+    it('should return the same list of posititve numbers', function() {
+      assert.deepEqual(map(identity, [1, 2]), [1, 2]);
+    });
+    it('should return the same list of negative numbers', function() {
+      assert.deepEqual(map(identity, [-1, -2]), [-1, -2]);
+    });
+    it('should return the same list of 0', function() {
+      assert.deepEqual(map(identity, [0]), [0]);
     });
   });
 });
