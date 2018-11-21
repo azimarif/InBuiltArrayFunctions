@@ -17,11 +17,15 @@ const identity = function(number) {
 }
 
 const isEven = function(number) {
-  return number % 2 == 0;
+  return number % 2 === 0;
 }
 
 const isPerfectSquare = function(number) {
   return number >= 0 && Math.sqrt(number) % 1 === 0;
+}
+
+const isPositiveNumber = function(number) {
+  return number > 0;
 }
 
 describe('Map Test Cases', function() {
@@ -81,6 +85,15 @@ describe('Filter Test Cases', function() {
     });
     it('should return 0 as perfect square from a list contaning 0', function() {
       assert.deepEqual(filter(isPerfectSquare, [0, 25, 81]), [0, 25, 81]);
+    });
+  });
+
+  describe('isPositiveNumber', function() {
+    it('should return all numbers from a positive number list', function() {
+      assert.deepEqual(filter(isPositiveNumber, [1, 2, 3, 4]), [1, 2, 3, 4]);
+    });
+    it('should return no number from a negative number list', function() {
+      assert.deepEqual(filter(isPositiveNumber, [-1, -2, -3, -4]), []);
     });
   });
 });
