@@ -20,6 +20,10 @@ const isEven = function(number) {
   return number % 2 == 0;
 }
 
+const isPerfectSquare = function(number) {
+  return number >= 0 && Math.sqrt(number) % 1 === 0;
+}
+
 describe('Map Test Cases', function() {
   describe('square', function() {
     it('should square the positive number', function() {
@@ -65,6 +69,18 @@ describe('Filter Test Cases', function() {
     });
     it('should list 0 as even number', function() {
       assert.deepEqual(filter(isEven, [0]), [0]);
+    });
+  });
+
+  describe('isPerfectSquare', function() {
+    it('should return all perfect squares from a positive number list', function() {
+      assert.deepEqual(filter(isPerfectSquare, [1, 2, 3, 4, 5, 9]), [1, 4, 9]);
+    });
+    it('should return no perfect square from a negative number list', function() {
+      assert.deepEqual(filter(isPerfectSquare, [-1, -2, -3, -4]), []);
+    });
+    it('should return 0 as perfect square from a list contaning 0', function() {
+      assert.deepEqual(filter(isPerfectSquare, [0, 25, 81]), [0, 25, 81]);
     });
   });
 });
