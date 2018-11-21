@@ -17,7 +17,21 @@ const filter = function(filtererFunction, inputArray){
   return result;
 }
 
+const reduce = function(reducerFunction, inputArray, accumulator) {
+  let index = 0;
+  if (!accumulator) {
+    accumulator = inputArray[0];
+    index = 1;
+  }
+  while (index < inputArray.length) {
+    accumulator = reducerFunction(accumulator, inputArray[index]);
+    index++;
+  }
+  return accumulator;
+}
+
 module.exports = {
   map,
-  filter 
+  filter,
+  reduce
 }

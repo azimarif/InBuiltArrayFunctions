@@ -1,7 +1,8 @@
 const assert = require('assert');
 const {
   map,
-  filter 
+  filter,
+  reduce 
 } = require('../src/arrayFunction.js');
 
 const square = function(number) {
@@ -26,6 +27,10 @@ const isPerfectSquare = function(number) {
 
 const isPositiveNumber = function(number) {
   return number > 0;
+}
+
+const sumOfTwoNumbers = function(number1, number2) {
+  return number1 + number2;
 }
 
 describe('Map Test Cases', function() {
@@ -94,6 +99,17 @@ describe('Filter Test Cases', function() {
     });
     it('should return no number from a negative number list', function() {
       assert.deepEqual(filter(isPositiveNumber, [-1, -2, -3, -4]), []);
+    });
+  });
+});
+
+describe('Reduce Test Cases', function() {
+  describe('sumOfTwoNumbers', function() {
+    it('should provide the sum of all the numbers in a postive number list', function() {
+      assert.deepEqual(reduce(sumOfTwoNumbers, [1, 2, 3, 4, 5]), 15);
+    });
+    it('should provide the sum of all the numbers in a negative number list', function() {
+      assert.deepEqual(reduce(sumOfTwoNumbers, [-1, -2, -3, -4, -5]), -15);
     });
   });
 });
