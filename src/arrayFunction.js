@@ -1,10 +1,9 @@
-const map = function(mapperFunction, inputArray){
-  let result = [];
-  for(let element of inputArray){
-    let value = mapperFunction(element);
-    result.push(value);
+const map = function(mapper, inputArray) {
+  let mappedElements = [];
+  for (let element of inputArray) {
+    mappedElements.push(mapper(element));
   }
-  return result;
+  return mappedElements;
 }
 
 const filter = function(filtererFunction, inputArray){
