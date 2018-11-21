@@ -6,14 +6,14 @@ const map = function(mapper, inputArray) {
   return mappedElements;
 }
 
-const filter = function(filtererFunction, inputArray){
-  let result = [];
-  for(element of inputArray){
-    if(filtererFunction(element)){
-      result.push(element);
+const filter = function(predicate, inputArray) {
+  let filteredElements = [];
+  for (element of inputArray) {
+    if (predicate(element)) {
+      filteredElements.push(element);
     }
   }
-  return result;
+  return filteredElements;
 }
 
 const reduce = function(reducerFunction, inputArray, accumulator) {
