@@ -16,14 +16,14 @@ const filter = function(predicate, inputArray) {
   return filteredElements;
 }
 
-const reduce = function(reducerFunction, inputArray, accumulator) {
+const reduce = function(reducer, inputArray, accumulator) {
   let index = 0;
-  if (!accumulator) {
+  if (accumulator == undefined) {
     accumulator = inputArray[0];
     index = 1;
   }
   while (index < inputArray.length) {
-    accumulator = reducerFunction(accumulator, inputArray[index]);
+    accumulator = reducer(accumulator, inputArray[index]);
     index++;
   }
   return accumulator;
