@@ -9,10 +9,6 @@ const square = function(number) {
   return number * number;
 }
 
-const incrementByOne = function(number) {
-  return number + 1;
-}
-
 const identity = function(number) {
   return number;
 }
@@ -33,41 +29,22 @@ const sumOfTwoNumbers = function(number1, number2) {
   return number1 + number2;
 }
 
-describe('Map Test Cases', function() {
-  describe('square', function() {
-    it('should square the positive number', function() {
-      assert.deepEqual(map(square, [1, 2]), [1, 4]);
-    });
-    it('should square the negative number', function() {
-      assert.deepEqual(map(square, [-1, -2]), [1, 4]);
-    });
-    it('should square 0', function() {
-      assert.deepEqual(map(square, [0]), [0]);
-    });
+describe('map', function() {
+  it('should return empty array for empty array', function() {
+    assert.deepEqual(map(identity, []), []);
   });
-
-  describe('increment', function() {
-    it('should increment the positive number by 1', function() {
-      assert.deepEqual(map(incrementByOne, [1, 2]), [2, 3]);
-    });
-    it('should increment the negative numbers by 1', function() {
-      assert.deepEqual(map(incrementByOne, [-3, -2]), [-2, -1]);
-    });
-    it('should increment 0 by 1', function() {
-      assert.deepEqual(map(incrementByOne, [0]), [1]);
-    });
+  it('should return a single element array for single element array', function() {
+    assert.deepEqual(map(identity, [1]), [1]);
   });
-
-  describe('identity', function() {
-    it('should return the same list of posititve numbers', function() {
-      assert.deepEqual(map(identity, [1, 2]), [1, 2]);
-    });
-    it('should return the same list of negative numbers', function() {
-      assert.deepEqual(map(identity, [-1, -2]), [-1, -2]);
-    });
-    it('should return the same list of 0', function() {
-      assert.deepEqual(map(identity, [0]), [0]);
-    });
+  it('should return multiple element array for multiple element array', function() {
+    assert.deepEqual(map(identity, [-1, -2]), [-1, -2]);
+  });
+  it('should preserve the length of the array', function(){
+    const numbers = [1, 2];
+    assert.deepEqual(map(square, numbers).length, numbers.length);
+  });
+  it('should transform the array as per mapped function', function(){
+    assert.deepEqual(map(square, [1, 2]), [1, 4]);
   });
 });
 
