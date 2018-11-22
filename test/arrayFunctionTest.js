@@ -2,7 +2,7 @@ const assert = require('assert');
 const {
   map,
   filter,
-  reduce 
+  reduce
 } = require('../src/arrayFunction.js');
 
 const square = function(number) {
@@ -63,10 +63,7 @@ describe('filter', function() {
   });
 });
 
-describe('Reduce Test Cases', function() {
-  it('should return undefined for an empty input array when initial value is not passed', function() {
-    assert.deepEqual(reduce(sumOfTwoNumbers, []), undefined);
-  });
+describe('reduce', function() {
   it('should return initial value for an empty input array when initial value is passed', function() {
     assert.deepEqual(reduce(sumOfTwoNumbers, [], 1), 1);
   });

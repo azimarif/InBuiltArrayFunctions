@@ -17,14 +17,13 @@ const filter = function(predicate, inputArray) {
 }
 
 const reduce = function(reducer, inputArray, accumulator) {
-  let index = 0;
   if (accumulator == undefined) {
     accumulator = inputArray[0];
-    index = 1;
+    inputArray = inputArray.slice(1);
   }
-  while (index < inputArray.length) {
-    accumulator = reducer(accumulator, inputArray[index]);
-    index++;
+  if (inputArray.length > 0) {
+    accumulator = reducer(accumulator, inputArray[0]);
+    accumulator = reduce(reducer, inputArray.slice(1), accumulator);
   }
   return accumulator;
 }
