@@ -17,16 +17,20 @@ const isEven = function(number) {
   return number % 2 === 0;
 }
 
-const isPerfectSquare = function(number) {
-  return number >= 0 && Math.sqrt(number) % 1 === 0;
-}
-
 const isPositiveNumber = function(number) {
   return number > 0;
 }
 
 const sumOfTwoNumbers = function(number1, number2) {
   return number1 + number2;
+}
+
+const returnTrue = function(number) {
+  return true;
+}
+
+const returnFalse = function(number) {
+  return false;
 }
 
 describe('map', function() {
@@ -48,35 +52,18 @@ describe('map', function() {
   });
 });
 
-describe('Filter Test Cases', function() {
-  describe('isEven', function() {
-    it('should list even numbers', function() {
-      assert.deepEqual(filter(isEven, [1, 2, 3, 4, 5]), [2, 4]);
-    });
-    it('should list 0 as even number', function() {
-      assert.deepEqual(filter(isEven, [0]), [0]);
-    });
+describe('filter', function() {
+  it('should return empty array for empty array ', function() {
+    assert.deepEqual(filter(isEven, []), []);
   });
-
-  describe('isPerfectSquare', function() {
-    it('should return all perfect squares from a positive number list', function() {
-      assert.deepEqual(filter(isPerfectSquare, [1, 2, 3, 4, 5, 9]), [1, 4, 9]);
-    });
-    it('should return no perfect square from a negative number list', function() {
-      assert.deepEqual(filter(isPerfectSquare, [-1, -2, -3, -4]), []);
-    });
-    it('should return 0 as perfect square from a list contaning 0', function() {
-      assert.deepEqual(filter(isPerfectSquare, [0, 25, 81]), [0, 25, 81]);
-    });
+  it('should return same array elements when predicate returns true for all input elements in array', function() {
+    assert.deepEqual(filter(returnTrue, [0, 1]), [0, 1]);
   });
-
-  describe('isPositiveNumber', function() {
-    it('should return all numbers from a positive number list', function() {
-      assert.deepEqual(filter(isPositiveNumber, [1, 2, 3, 4]), [1, 2, 3, 4]);
-    });
-    it('should return no number from a negative number list', function() {
-      assert.deepEqual(filter(isPositiveNumber, [-1, -2, -3, -4]), []);
-    });
+  it('should return no array element when predicate returns false for all input elements in array', function() {
+    assert.deepEqual(filter(returnFalse, [0, 1]), []);
+  });
+  it('should return only filtered array elements when predicate is applied on an array', function() {
+    assert.deepEqual(filter(isEven, [1, 2, 3, 4]), [2, 4]);
   });
 });
 
