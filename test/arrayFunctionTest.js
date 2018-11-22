@@ -17,10 +17,6 @@ const isEven = function(number) {
   return number % 2 === 0;
 }
 
-const isPositiveNumber = function(number) {
-  return number > 0;
-}
-
 const sumOfTwoNumbers = function(number1, number2) {
   return number1 + number2;
 }
@@ -68,12 +64,16 @@ describe('filter', function() {
 });
 
 describe('Reduce Test Cases', function() {
-  describe('sumOfTwoNumbers', function() {
-    it('should provide the sum of all the numbers in a postive number list', function() {
-      assert.deepEqual(reduce(sumOfTwoNumbers, [1, 2, 3, 4, 5]), 15);
-    });
-    it('should provide the sum of all the numbers in a negative number list', function() {
-      assert.deepEqual(reduce(sumOfTwoNumbers, [-1, -2, -3, -4, -5]), -15);
-    });
+  it('should return undefined for an empty input array when initial value is not passed', function() {
+    assert.deepEqual(reduce(sumOfTwoNumbers, []), undefined);
+  });
+  it('should return initial value for an empty input array when initial value is passed', function() {
+    assert.deepEqual(reduce(sumOfTwoNumbers, [], 1), 1);
+  });
+  it('should return reduced value for an input array', function() {
+    assert.deepEqual(reduce(sumOfTwoNumbers, [1, 2, 3, 4]), 10);
+  });
+  it('should return reduced value for an input array when initial value is passed', function() {
+    assert.deepEqual(reduce(sumOfTwoNumbers, [1, 2, 3, 4], 0), 10);
   });
 });
